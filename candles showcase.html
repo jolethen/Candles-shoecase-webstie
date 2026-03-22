@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sweet Rings • Handcrafted Serenity</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    html { scroll-behavior: smooth; }
+
+    :root {
+      --bg:        #faf8f5;
+      --cream:     #f5f0e9;
+      --text:      #2f2a25;
+      --accent:    #6a8d92;
+      --accent-dark:#4a6368;
+      --shadow:    rgba(42, 37, 32, 0.08);
+    }
+
+    * { margin:0; padding:0; box-sizing:border-box; }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 700; }
+
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 80px;
+      background: rgba(250,248,245,0.97);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(106,141,146,0.15);
+      z-index: 1000;
+    }
+
+    .nav-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      height: 100%;
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo { font-size: 2.2rem; color: var(--accent-dark); text-decoration: none; }
+
+    .nav-links {
+      display: flex;
+      gap: 2.8rem;
+    }
+
+    .nav-links a {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1.05rem;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover { color: var(--accent-dark); }
+
+    .hero {
+      height: 90vh;
+      min-height: 620px;
+      background: linear-gradient(rgba(47,42,37,0.5), rgba(47,42,37,0.65)),
+                  url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1600') center/cover;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .hero-content { max-width: 780px; padding: 0 1.5rem; }
+
+    .hero h1 { font-size: clamp(4rem, 9vw, 6.2rem); line-height: 1.05; margin-bottom: 1.2rem; }
+
+    .btn {
+      display: inline-block;
+      padding: 16px 44px;
+      background: white;
+      color: var(--accent-dark);
+      font-weight: 600;
+      border-radius: 50px;
+      text-decoration: none;
+      transition: all 0.4s;
+    }
+
+    .btn:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.2); }
+
+    .container { max-width: 1240px; margin: 0 auto; padding: 0 2rem; }
+
+    section { padding: 140px 0; }
+
+    h2 { font-size: 3.2rem; text-align: center; margin-bottom: 2.5rem; color: var(--accent-dark); }
+
+    #about p { max-width: 720px; margin: 0 auto 1.8rem; font-size: 1.15rem; color: #4a413a; }
+
+    .candles-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 2.5rem;
+    }
+
+    .candle-card {
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px var(--shadow);
+      transition: all 0.4s ease;
+    }
+
+    .candle-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 50px rgba(106,141,146,0.25);
+    }
+
+    .candle-card img { width: 100%; height: 340px; object-fit: cover; }
+
+    .candle-details {
+      cursor: pointer;
+    }
+
+    .candle-details summary {
+      list-style: none;
+      padding: 1.5rem 1.5rem 0.8rem;
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: var(--accent-dark);
+      position: relative;
+      outline: none;
+    }
+
+    .candle-details summary::after {
+      content: "▼";
+      position: absolute;
+      right: 1.5rem;
+      transition: transform 0.3s ease;
+    }
+
+    .candle-details[open] summary::after {
+      transform: rotate(180deg);
+    }
+
+    .candle-details .description {
+      padding: 0 1.5rem 1.5rem;
+      font-size: 0.98rem;
+      color: #5a4f44;
+      border-top: 1px solid #eee;
+    }
+
+    .price {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--accent-dark);
+      margin: 0.8rem 1.5rem 1rem;
+      text-align: center;
+    }
+
+    #contact { background: var(--cream); text-align: center; }
+
+    footer {
+      background: #1f1a16;
+      color: #c4b8a8;
+      text-align: center;
+      padding: 60px 0;
+    }
+
+    @media (max-width: 900px) {
+      .nav-links { gap: 1.6rem; }
+      .nav-links a { font-size: 0.98rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-container">
+    <a href="#" class="logo">🕯️ Ojas Candles</a>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#collection">Collection</a>
+      <a href="#shop">Shop</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-content">
+    <h1>Handcrafted Serenity</h1>
+    <p>Unique soy candles poured with intention in Lucknow</p>
+    <a href="#collection" class="btn">Explore Collection</a>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <h2>About Me</h2>
+    <p>Hi, I'm Noopur — passionated about the art of candle-making.</p>
+    <p>Everything started in my small home kitchen — melting soy wax, experimenting with essential oils, trying to capture feelings in a moulds.</p>
+    <p>Today My Candles are is still 100% hand-poured by me in Lucknow. Every single mould gets love, intention and a little piece of home. No mass production, no shortcuts — just real scents for real moments.</p>
+    <p>Thank you for being here. I hope one of these candles finds its way into your space and brings you a bit of peace.</p>
+  </div>
+</section>
+
+<!-- COLLECTION – 35 unique candles with expandable description -->
+<section id="collection" class="container">
+  <h2>Our Collection – 35 Scents</h2>
+  <div class="candles-grid">
+
+    <div class="candle-card">
+      <img src="https://picsum.photos/id/101/800/1000" alt="">
+      <details class="candle-details">
+        <summary>Lavender Twilight</summary>
+        <div class="description">
+          Calming French lavender blended with chamomile and a soft vanilla base. Perfect for bedtime rituals and relaxation.
+          Burn time: ~40–45 hours. 200 g soy wax.
+        </div>
+      </details>
+      <div class="price">₹749</div>
+    </div>
+
+    <div class="candle-card">
+      <img src="https://picsum.photos/id/237/800/1000" alt="">
+      <details class="candle-details">
+        <summary>Citrus Sunrise</summary>
+        <div class="description">
+          Energizing blend of bergamot, Sicilian lemon and fresh mint. Great for morning boosts or workspaces.
+          Burn time: ~40 hours. 200 g soy wax.
+        </div>
+      </details>
+      <div class="price">₹699</div>
+    </div>
+
+    <div class="candle-card">
+      <img src="https://picsum.photos/id/1069/800/1000" alt="">
+      <details class="candle-details">
+        <summary>Sandalwood Whisper</summary>
+        <div class="description">
+          Warm Mysore sandalwood with white cedar and golden amber. Deeply grounding and meditative.
+          Burn time: ~45 hours. 200 g soy wax.
+        </div>
+      </details>
+      <div class="price">₹849</div>
+    </div>
+
+    <div class="candle-card">
+      <img src="https://picsum.photos/id/825/800/1000" alt="">
+      <details class="candle-details">
+        <summary>Madagascar Vanilla</summary>
+        <div class="description">
+          Rich, creamy Madagascar vanilla pods with tonka bean and a hint of caramelized sugar. Ultimate comfort scent.
+          Burn time: ~40 hours. 200 g soy wax.
+        </div>
+      </details>
+      <div class="price">₹729</div>
+    </div>
+
+    <div class="candle-card">
+      <img src="https://picsum.photos/id/163/800/1000" alt="">
+      <details class="candle-details">
+        <summary>Jasmine Nocturne</summary>
+        <div class="description">
+          Intoxicating night-blooming jasmine with ylang-ylang and earthy patchouli undertones. Romantic & sensual.
+          Burn time: ~42 hours. 200 g soy wax.
+        </div>
+      </details>
+      <div class="price">₹769</div>
+    </div>
+
+    <div class="candle-card">
+      <img src="https://picsum.photos/800/1000?random=6" alt="">
+      <details class="candle-details">
+        <summary>Ocean Mist</summary>
+        <div class="description">
+          Clean sea salt, sun-bleached driftwood and a touch of blue eucalyptus. Instant coastal calm.
+          Burn time: ~40 hours. 200 g soy wax.
+        </div>
+      </details>
+      <div class="price">₹799</div>
+    </div>
+
+    <div class="candle-card">
+      <img src="https://picsum.photos/800/1000?random=7" alt="">
+      <details class="candle-details">
+        <summary>Damask Rose Velvet</summary>
+        <div class="description">
+          Luxurious Bulgarian Damask rose with geranium and soft pink musk. Elegant and timeless.
+          Burn time: ~45 hours. 200 g soy wax.
+        </div>
+      </details>
+      <div class="price">₹779</div>
+    </div>
+
+    <div class="candle-card">
+      <img src="https://picsum.photos/800/1000?random=8" alt="">
+      <details class="candle-details">
+        <summary>Eucalyptus Rain</summary>
+        <div class="description">
+          Crisp eucalyptus, spearmint and fresh rain accord. Clears the mind and airways.
+          Burn time: ~40 hours. 200 g soy wax.
+        </div>
+      </details>
+      <div class="price">₹699</div>
+    </div>
+
+    <div class="candle-card">
+      <img src="https://picsum.photos/800/1000?random=9" alt="">
+      <details class="candle-details">
+        <summary>Cinnamon Chai Glow</summary>
+        <div class="description">
+          Warm cinnamon bark, green cardamom and black tea leaves. Cozy chai-inspired hug.
+          Burn time: ~42 hours. 200 g soy wax.
+        </div>
+      </details>
+      <div class="price">₹719</div>
+    </div>
+
+    <div class="candle-card">
+      <img src="https://picsum.photos/800/1000?random=10" alt="">
+      <details class="candle-details">
+        <summary>Kashmiri Saffron Silk</summary>
+        <div class="description">
+          Precious Kashmiri saffron threads with honey and subtle oud wood. Royal and exotic.
+          Burn time: ~45 hours. 200 g soy wax.
+        </div>
+      </details>
+      <div class="price">₹899</div>
+    </div>
+
+    <div class="candle-card">
+      <img src="https://picsum.photos/800/1000?random=11" alt="">
+      <details class="candle-details">
+        <summary>Black Fig & Honey</summary>
+        <div class="description">
+          Juicy black figs, wild forest honey and creamy tonka bean. Rich and indulgent.
+          Burn time: ~40 hours. 200 g soy wax.
+        </div>
+      </details>
+      <div class="price">₹759</div>
+    </div>
+
+    <div class="candle-card">
+      <img src="https://picsum.photos/800/1000?random=12" alt="">
+      <details class="candle-details">
+        <summary>Amber Dusk</summary>
+        <div class="description">
+          Warm amber resin, labdanum and vanilla bourbon. Golden-hour comfort in a jar.
+          Burn time: ~45 hours. 200 g soy wax.
+        </div>
+      </details>
+      <div class="price">₹829</div>
+    </div>
+
+    <div class="candle-card">
+      <img src="https://picsum.photos/800/1000?random=13" alt="">
+      <details class="candle-details">
+        <summary>Coconut Lime Zest</summary>
+        <div class="description">
+          Creamy coconut, zesty key lime and clean white musk. Tropical vacation vibe.
+          Burn time: ~40 hours. 200 g soy wax.
+        </div>
+      </details>
+      <div class="price">₹689</div>
+    </div>
+
+    <div class="candle-card">
+      <img src="https://picsum.photos/800/1000?random=14" alt="">
+      <details class="candle-details">
+        <summary>Patchouli Forest</summary>
+        <div class="description">
+          Deep, earthy patchouli with vetiver and smoked cedar. Forest meditation.
+          Burn time: ~45 hours. 200 g soy wax.
+        </div>
+      </details>
+      <div class="price">₹789</div>
+    </div>
+
+    <div class="candle-card">
+      <img src="https://picsum.photos/800/1000?random=15" alt="">
+      <details class="candle-details">
+        <summary>Peony Garden</summary>
+        <div class="description">
+          Lush peony petals, rose de mai and delicate freesia. Romantic spring bouquet.
+          Burn time: ~40 hours. 200 g soy wax.
+        </div>
+      </details>
+      <div class="price">₹749</div>
+    </div>
+
+    <div class="candle-card">
+      <img src="https://picsum.photos/800/1000?random=16" alt="">
+      <details class="candle-details">
+        <summary>Dark Cherry Smoke</summary>
+        <div class="description">
+          Ripe black cherry, smoked oak and dark cocoa. Mysterious & gourmand.
+          Burn time: ~42 hours. 200 g soy wax.
+        </div>
+      </details>
+      <div class="price">₹799</div>
+    </div>
+
+    <div class="candle-card">
+      <img src="https://picsum.photos/800/1000?random=17" alt="">
+      <details class="candle-details">
+        <summary>Green Tea Blossom</summary>
+        <div class="description">
+          Fresh sencha green tea with jasmine petals and soft white musk. Clean & zen.
+          Burn time: ~40 hours. 200 g soy wax.
+        </div>
+      </details>
+      <div class="price">₹729</div>
+    </div>
+
+    <div class="candle-card">
+      <img src="https://picsum.photos/800/1000?random=18" alt="">
+      <details class="candle-details">
+        <summary>Cardamom Rose</summary>
+        <div class="description">
+          Green cardamom pods with Turkish rose and a thread of saffron. Spicy-floral luxury.
+          Burn time: ~45 hours. 200 g soy wax.
+        </div>
+      </details>
+      <div class="price">₹779</div>
+    </div>
+
+    <div class="candle-card">
+      <img src="https://picsum.photos/800/1000?random=19" alt="">
+      <details class="candle-details">
+        <summary>Lemon Myrtle</summary>
+        <div class="description">
+          Bright Australian lemon myrtle, lemongrass and verbena. Uplifting citrus-herbal.
+          Burn time: ~40 hours. 200 g soy wax.
+        </div>
+      </details>
+      <div class="price">₹679</div>
+    </div>
+
+    <div class="candle-card">
+      <img src="https://picsum.photos/800/1000?random=20" alt="">
+      <details class="candle-details">
+        <summary>Mint Mojito</summary>
+        <div class="description">
+          Fresh spearmint leaves, lime zest and sugarcane. Refreshing summer cocktail vibe.
+          Burn time: ~40 hours. 200 g soy wax.
+        </div>
+      </details>
+      <div class="price">₹699</div>
+    </div>
+
+    <div class="candle-card">
+      <img src="https://picsum.photos/800/1000?random=21" alt="">
+      <details class="candle-details">
+        <summary>Frankincense & Myrrh</summary>
+        <div class="description">
+          Sacred frankincense and myrrh with balsamic amber. Spiritual & ancient.
+          Burn time: ~45 hours. 200 g soy wax.
+        </div>
+      </details>
+      <div class="price">₹899</div>
+    </div>
+
+    <div class="candle-card">
+      <img src="https://picsum.photos/800/1000?random=22" alt="">
+      <details class="candle-details">
+        <summary>Orange Blossom</summary>
+        <div class="description">
+          Sweet Tunisian orange blossom, neroli and petitgrain. Sunny Mediterranean grove.
+          Burn time: ~40 hours. 200 g soy wax.
+        </div>
+      </details>
+      <div class="price">₹729</div>
+    </div>
+
+    <div class="candle-card">
+      <img src="https://picsum.photos/800/1000?random=23" alt="">
+      <details class="candle-details">
+        <summary>Cedar & Sage</summary>
+        <div class="description">
+          Red cedar, white sage and juniper berry. Cleansing & grounding ritual scent.
+          Burn time: ~42 hours. 200 g soy wax.
+        </div>
+      </details>
+      <div class="price">₹789</div>
+    </div>
+
+    <div class="candle-card">
+      <img src="https://picsum.photos/800/1000?random=24" alt="">
+      <details class="candle-details">
+        <summary>Pomegranate Noir</summary>
+        <div class="description">
+          Juicy pomegranate, black currant and dark plum. Bold and mysterious.
+          Burn time: ~40 hours. 200 g soy wax.
+        </div>
+      </details>
+      <div class="price">₹749</div>
+    </div>
+
+    <div class="candle-card">
+      <img src="https://picsum.photos/800/1000?random=25" alt="">
+      <details class="candle-details">
+        <summary>White Tea & Ginger</summary>
+        <div class="description">
+          Silver needle white tea, fresh ginger and bergamot. Clean and invigorating.
+          Burn time: ~40 hours. 200 g soy wax.
+        </div>
+      </details>
+      <div class="price">₹719</div>
+    </div>
+
+    <div class="candle-card">
+      <img src="https://picsum.photos/800/1000?random=26" alt="">
+      <details class="candle-details">
+        <summary>Clove & Tobacco</summary>
+        <div class="description">
+          Warm clove bud, sweet pipe tobacco and vanilla leaf. Rich & masculine.
+          Burn time: ~45 hours. 200 g soy wax.
+        </div>
+      </details>
+      <div class="price">₹819</div>
+    </div>
+
+    <div class="candle-card">
+      <img src="https://picsum.photos/800/1000?random=27" alt="">
+      <details class="candle-details">
+        <summary>Lily of the Valley</summary>
+        <div class="description">
+          Delicate lily of the valley, green leaves and jasmine. Fresh spring garden.
+          Burn time: ~40 hours. 200 g soy wax.
+        </div>
+      </details>
+      <div class="price">₹739</div>
+    </div>
+
+    <div class="candle-card">
+      <img src="https://picsum.photos/800/1000?random=28" alt="">
+      <details class="candle-details">
+        <summary>Mango & Coconut</summary>
+        <div class="description">
+          Juicy Alphonso mango, coconut milk and vanilla. Tropical escape.
+          Burn time: ~42 hours. 200 g soy wax.
+        </div>
+      </details>
+      <div class="price">₹709</div>
+    </div>
+
+    <div class="candle-card">
+      <img src="https://picsum.photos/800/1000?random=29" alt="">
+      <details class="candle-details">
+        <summary>Smoked Oud</summary>
+        <div class="description">
+          Deep smoked oud, leather and frankincense. Intense & luxurious.
+          Burn time: ~45 hours. 200 g soy wax.
+        </div>
+      </details>
+      <div class="price">₹949</div>
+    </div>
+
+    <div class="candle-card">
+      <img src="https://picsum.photos/800/1000?random=30" alt="">
+      <details class="candle-details">
+        <summary>Applewood & Cinnamon</summary>
+        <div class="description">
+          Smoked applewood, cinnamon stick and clove. Warm autumn fireplace.
+          Burn time: ~40 hours. 200 g soy wax.
+        </div>
+      </details>
+      <div class="price">₹769</div>
+    </div>
+
+    <div class="candle-card">
+      <img src="https://picsum.photos/800/1000?random=31" alt="">
+      <details class="candle-details">
+        <summary>Blueberry Lavender</summary>
+        <div class="description">
+          Juicy blueberry, English lavender and a touch of honey. Sweet & soothing.
+          Burn time: ~40 hours. 200 g soy wax.
+        </div>
+      </details>
+      <div class="price">₹749</div>
+    </div>
+
+    <div class="candle-card">
+      <img src="https://picsum.photos/800/1000?random=32" alt="">
+      <details class="candle-details">
+        <summary>Golden Hour</summary>
+        <div class="description">
+          Sun-warmed amber, honey and bergamot. Golden sunset in a jar.
+          Burn time: ~42 hours. 200 g soy wax.
+        </div>
+      </details>
+      <div class="price">₹799</div>
+    </div>
+
+    <div class="candle-card">
+      <img src="https://picsum.photos/800/1000?random=33" alt="">
+      <details class="candle-details">
+        <summary>Midnight Orchid</summary>
+        <div class="description">
+          Black orchid, vanilla orchid and dark plum. Mysterious & seductive.
+          Burn time: ~45 hours. 200 g soy wax.
+        </div>
+      </details>
+      <div class="price">₹829</div>
+    </div>
+
+    <div class="candle-card">
+      <img src="https://picsum.photos/800/1000?random=34" alt="">
+      <details class="candle-details">
+        <summary>Spring Rain</summary>
+        <div class="description">
+          Petitgrain, green tea and wet stones. Fresh after-rain clarity.
+          Burn time: ~40 hours. 200 g soy wax.
+        </div>
+      </details>
+      <div class="price">₹719</div>
+    </div>
+
+    <div class="candle-card">
+      <img src="https://picsum.photos/800/1000?random=35" alt="">
+      <details class="candle-details">
+        <summary>Autumn Orchard</summary>
+        <div class="description">
+          Crisp apple, ripe pear and cinnamon spice. Classic fall comfort.
+          Burn time: ~42 hours. 200 g soy wax.
+        </div>
+      </details>
+      <div class="price">₹749</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SHOP -->
+<section id="shop" class="container">
+  <h2>Shop</h2>
+  <p style="text-align:center; font-size:1.3rem; max-width:700px; margin:0 auto 3rem; color:#5a4f44;">
+    All candles from the collection are available for purchase.<br>
+    Currently taking orders though Meesho.
+  </p>
+  <div style="text-align:center;">
+    <a href="#collection" class="btn" style="margin-right:1.5rem;">View Candles</a>
+    <a href="#contact" class="btn">Contact to Order</a>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <h2>Let's Connect</h2>
+    <p style="font-size:1.3rem; margin-bottom:2rem;">
+      Questions? Custom orders? Just want to say hi?<br>
+      Reach out anytime.
+    </p>
+    <p style="font-size:1.4rem;">
+       <strong>Meesho:</strong> <a href="https://www.meesho.com/@ojascandles" style="color:var(--accent-dark);">i'll add it later</a>
+      <strong>Instagram:</strong> <a href="https://www.instagram.com/noopur_raghav_chaudhary/" style="color:var(--accent-dark);">noopur_raghav_chaudhary/</a>
+    </p>
+  </div>
+</section>
+
+<footer>
+  <p>Made with ♡ in Lucknow • © 2026 Candles by Sweet Rings</p>
+</footer>
+
+</body>
+</html>
